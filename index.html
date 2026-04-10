@@ -17,7 +17,23 @@
 <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/loader.css">
+    <style>
+.page-wrapper iframe {
+  width: 87vw;
+  height: 105vh;
+  border: 0;
+  overflow-y: hidden;
+  margin-top: -60px;
+}
 
+/* Mobile view */
+@media (max-width: 768px) {
+  .page-wrapper iframe {
+    width: 100vw;
+    margin-top: 0px;
+  }
+}
+</style>
 </head>
 <body>
 <div id="global-loader">
@@ -277,9 +293,9 @@
 
 <div class="page-wrapper">
   <iframe src="assets/plugins/waves.html" 
-          style="position: absolute; top: 0px; left: 0; width: 100vw; height: 100vh; z-index: 0; border: none;">
+          style="position: absolute; top: 0px; left: 0; width: 100vw; height: 105vh; z-index: 0; border: none;">
   </iframe>
-<iframe src="https://lookerstudio.google.com/embed/reporting/9683c48e-db29-4dc3-b972-63e3426ea8d6" frameborder="0" style="border:0;height:97vh;width:100%;position:relative;z-index:1;display:block;margin:0auto;" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<iframe src="https://lookerstudio.google.com/embed/reporting/9683c48e-db29-4dc3-b972-63e3426ea8d6" frameborder="0" style="border:0;height:102vh;width:100%;position:relative;z-index:1;display:block;margin:0auto;" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
 
 </div>
 
