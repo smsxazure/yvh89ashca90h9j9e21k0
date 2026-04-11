@@ -269,20 +269,14 @@
     </a>
 </li>
 
-<li class="submenu">
-<a href="javascript:void(0);"><img src="assets/img/icons/logs.png" style="height: 23px;width: auto;"  alt="img"><span>Resident Concerns</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="residentlogs.html">Concern Logs</a></li>
-<li><a href="residentform.html">Concern Form</a></li>
-</ul>
+<li>
+    <a onclick="location.href='residentlogs.html';"><img src="assets/img/icons/resident.png" style="height: 23px;width: auto;" alt="img"><span>Resident Concerns</span>
+    </a>
 </li>
 
-<li class="submenu">
-<a href="javascript:void(0);"><img src="assets/img/icons/form.png" style="height: 23px;width: auto;"  alt="img"><span>Employee Concerns</span> <span class="menu-arrow"></span></a>
-<ul>
-<li><a href="employeelogs.html" class="active">Concern Logs</a></li>
-<li><a href="employeeform.html">Concern Form</a></li>
-</ul>
+<li>
+    <a onclick="location.href='employeelogs.html';"><img src="assets/img/icons/employee.png" style="height: 23px;width: auto;" alt="img"><span>Employee Concerns</span>
+    </a>
 </li>
 
 <img src="assets/img/seperator.png" alt="img" style="width: 100%;">
@@ -300,10 +294,20 @@
 </div>
 
 </div>
+<div id="floating-container"></div>
+
+<!-- Overlay -->
+<div class="overlay-frame" id="overlay-frame" style="display: none;">
+  <div class="overlay-header">
+    <button class="refresh-btn" onclick="refreshOverlay()">↻</button>
+    <button class="close-btn" onclick="closeOverlay()">×</button>
+  </div>
+  <iframe id="overlay-iframe" src="" frameborder="0"></iframe>
+</div>
 
 <script src="assets/js/jquery-3.6.0.min.js"></script>
 <script src="assets/js/feather.min.js"></script>
-<script src="assets/js/float.js"></script>
+<script src="assets/js/employee.js"></script>
 <script src="assets/js/jquery.slimscroll.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/script.js"></script>
