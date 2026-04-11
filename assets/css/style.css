@@ -3544,8 +3544,16 @@ body {
 }
 
 .button-menu {
-  cursor: pointer;
   background-color: #234570;
+}
+
+.button-menu1 {
+  background-color: #4caf50;
+}
+
+.button-menu,
+.button-menu1 {
+  cursor: pointer;
   color: #fff;
   font-size: 30px;
   width: 80px;
@@ -3559,6 +3567,7 @@ body {
   transition: 0.2s ease;
 }
 
-.button-menu:hover {
+.button-menu:hover,
+.button-menu1:hover {
   transform: scale(0.95);
 }
