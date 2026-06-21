@@ -18,20 +18,64 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/loader.css">
     <style>
-.page-wrapper iframe {
-  width: 87vw;
-  height: 89vh;
-  border: 0;
-  overflow-y: hidden;
-  margin-top: -60px;
+.page-wrapper {
+  position: relative;
+  width: 86vw;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* Mobile view */
-@media (max-width: 768px) {
-  .page-wrapper iframe {
+.page-wrapper iframe.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 5px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  min-height: 420px;
+}
+
+.sheet {
+  width: 100%;
+  height: 420px;
+  border: none;
+}
+
+@media (orientation: portrait) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sheet {
+    height: 380px;
+  }
+  .page-wrapper {
     width: 100vw;
-    height: 85vh;
-    margin-top: 0px;
+}
+}
+
+@media (orientation: landscape) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 </style>
@@ -235,10 +279,10 @@
 <div class="header">
 
 <div class="header-left active">
-<a href="ghk-dashboard.html" class="logo" style="cursor: default;">
+<a href="mgr-dashboard.html" class="logo" style="cursor: default;">
 <img src="assets/img/logo.png" alt="">
 </a>
-<a href="ghk-dashboard.html" class="logo-small" style="cursor: default;">
+<a href="mgr-dashboard.html" class="logo-small" style="cursor: default;">
 <img src="assets/img/logo-small.png" alt="">
 </a>
 
@@ -253,7 +297,7 @@
 </a>
 
 <ul class="nav user-menu">
-<h1 class="page-heading">Employee Concerns
+<h1 class="page-heading">Settings
 </h1>
 </ul>
 
@@ -265,7 +309,7 @@
 <br>
 <br>
 <li>
-<h2>Grounds & Housekeeping</h2>
+<h2>Manager</h2>
 <button onclick="logout()" style="
     top: 10px;
     right: 10px;
@@ -281,17 +325,22 @@ Logout
 </li>
 <img src="assets/img/seperator2.png" alt="img" style="width: 100%;">
 <li>
-    <a onclick="location.href='ghk-dashboard.html';"><img src="assets/img/icons/dashboard.png" style="height: 23px;width: auto;" alt="img"><span>Dashboard</span>
+    <a onclick="location.href='mgr-dashboard.html';"><img src="assets/img/icons/dashboard.png" style="height: 23px;width: auto;" alt="img"><span>Dashboard</span>
     </a>
 </li>
 
 <li>
-    <a onclick="location.href='ghk-residentlogs.html';"><img src="assets/img/icons/resident.png" style="height: 23px;width: auto;" alt="img"><span>Resident Concerns</span>
+    <a onclick="location.href='mgr-residentlogs.html';"><img src="assets/img/icons/resident.png" style="height: 23px;width: auto;" alt="img"><span>Resident Concerns</span>
     </a>
 </li>
 
 <li>
-    <a onclick="location.href='ghk-employeelogs.html';"><img src="assets/img/icons/employee.png" style="height: 23px;width: auto;" alt="img"><span>Employee Concerns</span>
+    <a onclick="location.href='mgr-employeelogs.html';"><img src="assets/img/icons/employee.png" style="height: 23px;width: auto;" alt="img"><span>Employee Concerns</span>
+    </a>
+</li>
+
+<li>
+    <a onclick="location.href='mgr-settings.html';"><img src="assets/img/icons/settings.png" style="height: 23px;width: auto;" alt="img"><span>Settings</span>
     </a>
 </li>
 
@@ -302,29 +351,41 @@ Logout
 </div>
 
 <div class="page-wrapper">
-  <iframe src="assets/plugins/greenwaves.html" 
-          style="position: absolute; top: 0px; left: 0; width: 100vw; height: 110vh; z-index: 0; border: none;">
+
+  <!-- Background -->
+  <iframe class="bg"
+    src="assets/plugins/silverwaves.html">
   </iframe>
 
-<iframe src="https://docs.google.com/spreadsheets/d/12FSHhBCzsIULcVsVK2TAnLDeYEVl-j0G16WALd7_bOU/edit?usp=sharing?widget=true&amp;rm=minimal&headers=false;resourcekey=&gid=960071500#gid=960071500&fvid=1115627726" frameborder="0" style="height: 110vh;border:0;position:relative;z-index:1;display:block;margin:0auto;" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+  <!-- Content Layer -->
+  <div class="content">
 
-</div>
+    <div class="grid">
+      
+      <div class="card">
+        <iframe class="sheet"
+          src="https://docs.google.com/spreadsheets/d/12FSHhBCzsIULcVsVK2TAnLDeYEVl-j0G16WALd7_bOU/edit?usp=sharing?widget=true&amp;rm=minimal&headers=false;resourcekey=&gid=1233724406#gid=1233724406">
+        </iframe>
+      </div>
 
-</div>
-<div id="floating-container"></div>
+      <div class="card">
+        <iframe class="sheet"
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQQRBgOFPU0xoceCES1NGpcuJHX35dtDv7kdxyKq3RAf_CSN8wZexqYAZ2euasCkvtH7bIVtO7HY6f_/pubhtml?gid=873340391&amp;single=true&amp;widget=true&amp;headers=false">
+        </iframe>
+      </div>
 
-<!-- Overlay -->
-<div class="overlay-frame" id="overlay-frame" style="display: none;">
-  <div class="overlay-header">
-    <button class="refresh-btn" onclick="refreshOverlay()">↻</button>
-    <button class="close-btn" onclick="closeOverlay()">×</button>
+    </div>
+
   </div>
-  <iframe id="overlay-iframe" src="" frameborder="0"></iframe>
 </div>
+</div>
+
+</div>
+
 
 <script src="assets/js/jquery-3.6.0.min.js"></script>
 <script src="assets/js/feather.min.js"></script>
-<script src="assets/js/employee.js"></script>
+<script src="assets/js/resident.js"></script>
 <script src="assets/js/jquery.slimscroll.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/script.js"></script>
@@ -337,5 +398,6 @@ function logout() {
     window.location.href = "index.html";
 }
 </script>
+
 </body>
 </html>
