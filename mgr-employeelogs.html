@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="assets/js/auth.js"></script>
+<script>
+protectPage("mgr");
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 <meta name="description" content="M.System Solutions">
@@ -8,7 +12,6 @@
 <meta name="author" content="M.System Solutions">
 <meta name="robots" content="noindex, nofollow">
 <title>M.System Solutions</title>
-
 <link rel="shortcut icon" type="image/x-icon" href="assets/img/logso.png">
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/animate.css">
@@ -278,6 +281,15 @@
 ">
 Logout
 </button>
+<script>
+function logout() {
+    localStorage.setItem("auth", "0");
+    localStorage.removeItem("role");
+    localStorage.removeItem("lastPage");
+
+    window.location.href = "index.html";
+}
+</script>
 </li>
 <img src="assets/img/seperator2.png" alt="img" style="width: 100%;">
 <li>

@@ -60,7 +60,7 @@
 /* 📱 MOBILE VIEW */
 @media (max-width: 768px) {
     .container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         justify-items: center;
     }
 
@@ -198,34 +198,50 @@ const passwords = {
     secBtn: "sec123"
 };
 
+window.addEventListener("DOMContentLoaded", () => {
+
+    const auth = localStorage.getItem("auth");
+    const lastPage = localStorage.getItem("lastPage");
+
+    // Auto-return to last dashboard if already logged in
+    if (auth === "1" && lastPage) {
+        window.location.href = lastPage;
+        return;
+    }
+
+});
+
 function checkPassword() {
-    const input = document.getElementById('passwordInput').value;
-    const error = document.getElementById('error');
+
+    const input = document.getElementById("passwordInput").value;
+    const error = document.getElementById("error");
 
     let matched = false;
 
     Object.keys(passwords).forEach(id => {
+
         const btn = document.getElementById(id);
+
         if (!btn) return;
 
         if (input === passwords[id]) {
+
             btn.disabled = false;
             matched = true;
+
         } else {
+
             btn.disabled = true;
+
         }
+
     });
 
-    error.style.display = matched ? "none" : "block";
+    error.style.display =
+        (input.length > 0 && !matched)
+        ? "block"
+        : "none";
 }
-
-window.addEventListener("DOMContentLoaded", () => {
-    const savedPage = localStorage.getItem("lastPage");
-
-    if (savedPage) {
-        window.location.href = savedPage;
-    }
-});
 </script>
 </body>
 </html>
